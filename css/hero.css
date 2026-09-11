@@ -1,0 +1,404 @@
+/*
+ * hero.css
+ * Hero section — Section 01
+ *
+ * Layout: Asymmetric split grid
+ *   Left column  (index): section number + vertical rule
+ *   Right column (content): kicker, display name, gold rule,
+ *                            statement, credential, CTA block
+ *
+ * Visual system: Editorial Noir / Luxury Minimal
+ */
+
+/* ── Section container ───────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-block: var(--space-24);
+  padding-inline: clamp(var(--space-6), 5vw, var(--space-16));
+}
+
+/* ── Grain overlay ───────────────────────────────────────────── */
+/*
+ * SVG grain: fine noise texture embedded as data URI.
+ * Adds material depth without any imagery.
+ * Pointer-events disabled so it never interferes with clicks.
+ */
+
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 260px 260px;
+}
+
+/* ── Portrait photo — ambient right-half ────────────────────── */
+/*
+ * The photo sits at z-index 0 (behind the text grid at z-index 1).
+ * It is absolutely positioned against the hero's relative container.
+ * A CSS mask-image dissolves the photo into the dark background:
+ *   - left edge: hard fade from transparent to visible (protects text)
+ *   - bottom edge: soft fade to transparent (grounds it in the noir)
+ * pointer-events: none ensures it never intercepts clicks.
+ */
+
+.hero__photo-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  /*
+   * Dual-axis gradient mask:
+   *   horizontal — transparent at left (0%), opaque at ~38%
+   *   vertical   — opaque at top, fading to transparent at bottom
+   *
+   * The two gradients are combined via luminance: the darker of the
+   * two masks wins, so left-fade and bottom-fade both apply.
+   */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 38%),
+    linear-gradient(to top,   transparent 0%, #000 28%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 38%),
+    linear-gradient(to top,   transparent 0%, #000 28%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+}
+
+.hero__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;  /* keep face in frame on crop */
+  opacity: 0.82;                /* slightly desaturated presence */
+  filter: contrast(1.04) brightness(0.94);
+}
+
+/* ── Asymmetric grid ─────────────────────────────────────────── */
+
+.hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: var(--hero-index-width) 1fr;
+  gap: 0 clamp(var(--space-8), 4vw, var(--space-16));
+  align-items: start;
+  width: 100%;
+  max-width: calc(var(--hero-index-width) + var(--hero-content-max) + 4rem);
+}
+
+/* ── Left: index sidebar ─────────────────────────────────────── */
+
+.hero__index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding-top: 0.35em; /* optical alignment with kicker cap-height */
+}
+
+.hero__index-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  user-select: none;
+}
+
+.hero__index-rule {
+  width: var(--rule-width);
+  flex: 1;
+  min-height: var(--space-32);
+  background: linear-gradient(
+    to bottom,
+    var(--color-text-tertiary) 0%,
+    transparent 100%
+  );
+}
+
+/* ── Right: content column ───────────────────────────────────── */
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Kicker / specialty tag */
+
+.hero__kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: var(--space-5);
+  /* Stagger transition applied by JS via data-delay */
+}
+
+/* Name — editorial display */
+
+.hero__name {
+  font-family: var(--font-editorial);
+  font-size: clamp(var(--text-3xl), 9vw, var(--text-5xl));
+  font-weight: var(--weight-regular);
+  font-style: italic;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-8);
+}
+
+/* Gold structural rule */
+
+.hero__rule {
+  width: clamp(3rem, 10vw, 5rem);
+  height: var(--accent-rule-height);
+  background-color: var(--color-accent);
+  margin-bottom: var(--space-8);
+}
+
+/* Statement */
+
+.hero__statement {
+  font-family: var(--font-sans);
+  font-size: clamp(var(--text-base), 1.6vw, var(--text-md));
+  font-weight: var(--weight-light);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+  max-width: 38ch;
+  margin-bottom: var(--space-4);
+}
+
+/* Academic credential */
+
+.hero__credential {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-12);
+}
+
+/* ── CTA block ───────────────────────────────────────────────── */
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6) var(--space-8);
+}
+
+/* Icon links list */
+
+.hero__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* Individual icon link */
+
+.hero__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  transition:
+    color var(--duration-fast) var(--ease-out-quad);
+}
+
+.hero__link-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  transition: color var(--duration-fast) var(--ease-out-quad);
+}
+
+.hero__link:hover,
+.hero__link:focus-visible {
+  color: var(--color-accent);
+}
+
+/* Primary CTA: Download CV */
+
+.hero__cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: var(--rule-width) solid var(--color-accent);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out-quad),
+    color var(--duration-fast) var(--ease-out-quad);
+}
+
+.hero__cv-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out-quad);
+}
+
+.hero__cv-btn:hover,
+.hero__cv-btn:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-bg-base);
+}
+
+.hero__cv-btn:hover .hero__cv-icon {
+  transform: translateY(2px);
+}
+
+/* ── Scroll indicator ────────────────────────────────────────── */
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  left: clamp(var(--space-6), 5vw, var(--space-16));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.hero__scroll-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-light);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.hero__scroll-track {
+  display: block;
+  width: var(--rule-width);
+  height: 3rem;
+  background: var(--color-text-tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__scroll-thumb {
+  display: block;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--color-accent);
+  animation: scroll-slide 2.2s var(--ease-out-expo) infinite;
+}
+
+@keyframes scroll-slide {
+  0%   { top: -100%; }
+  60%  { top: 100%; }
+  100% { top: 100%; }
+}
+
+/* ── Stagger reveal delays ───────────────────────────────────── */
+/*
+ * JS fires the .is-visible class on each .reveal-up element.
+ * Each element carries a data-delay attribute (integer 0–6)
+ * that JS uses to compute: delay = index * stagger-step.
+ * We pre-declare the custom property here for clarity;
+ * JS overrides transition-delay inline.
+ */
+
+/* ── Responsive ──────────────────────────────────────────────── */
+
+/* Tablet — collapse index sidebar at narrow widths */
+
+@media (max-width: 680px) {
+  .hero {
+    padding-block: var(--space-16);
+    justify-content: flex-start;
+    padding-top: clamp(4rem, 15vw, 7rem);
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero__index {
+    display: none; /* index sidebar hidden on mobile */
+  }
+
+  .hero__name {
+    font-size: clamp(var(--text-2xl), 14vw, var(--text-4xl));
+  }
+
+  .hero__statement {
+    max-width: 100%;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  .hero__links {
+    gap: var(--space-5);
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  /* Photo hidden on mobile — content has full priority */
+  .hero__photo-wrap {
+    display: none;
+  }
+}
+
+/* Large desktop */
+
+@media (min-width: 1440px) {
+  .hero__name {
+    font-size: clamp(var(--text-5xl), 10vw, var(--text-6xl));
+  }
+
+  /* At very large viewports, keep photo from dominating */
+  .hero__photo-wrap {
+    width: 45%;
+  }
+}

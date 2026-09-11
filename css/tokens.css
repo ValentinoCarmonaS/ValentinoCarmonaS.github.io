@@ -1,0 +1,109 @@
+﻿/*
+ * tokens.css
+ * Design System Tokens — Editorial Noir / Luxury Minimal
+ * Portfolio: Valentino Carmona
+ *
+ * These tokens define the single source of truth for the entire
+ * visual system. All component files consume them via var().
+ */
+
+:root {
+
+  /* ── Color ─────────────────────────────────────────────────────── */
+
+  /* Backgrounds */
+  --color-bg-base:        #0b0b0d;   /* deepest surface */
+  --color-bg-raised:      #111115;   /* elevated surface */
+  --color-bg-muted:       #2a2a32;   /* subtle containers */
+
+  /* Foregrounds */
+  --color-text-primary:   #f0ede8;   /* primary text */
+  --color-text-secondary: #8a8a96;   /* subdued labels */
+  --color-text-tertiary:  #4a4a56;   /* faintest detail */
+
+  /* Accent — warm gold */
+  --color-accent:         #c9a96e;
+  --color-accent-dim:     rgba(201, 169, 110, 0.18);
+  --color-accent-hover:   #dbbf82;
+
+  /* ── Typography ──────────────────────────────────────────────── */
+
+  /* Families */
+  --font-editorial:  'EB Garamond', Georgia, serif;       /* display / name */
+  --font-sans:       'Geist', system-ui, sans-serif;      /* body / UI */
+  --font-mono:       'DM Mono', 'Courier New', monospace; /* code / labels */
+
+  /* Scale — editorial hierarchy */
+  --text-xs:   0.6875rem;   /* 11px */
+  --text-sm:   0.75rem;     /* 12px */
+  --text-base: 0.9375rem;   /* 15px */
+  --text-md:   1.0625rem;   /* 17px */
+  --text-lg:   1.25rem;     /* 20px */
+  --text-xl:   1.75rem;     /* 28px */
+  --text-2xl:  2.5rem;      /* 40px */
+  --text-3xl:  3.5rem;      /* 56px */
+  --text-4xl:  5rem;        /* 80px */
+  --text-5xl:  7.5rem;      /* 120px */
+  --text-6xl:  10rem;       /* 160px */
+
+  /* Weight */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+
+  /* Tracking */
+  --tracking-tight:  -0.03em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.08em;
+  --tracking-widest:  0.2em;
+
+  /* Leading */
+  --leading-tight:  1.05;
+  --leading-snug:   1.2;
+  --leading-normal: 1.5;
+  --leading-loose:  1.75;
+
+  /* ── Spacing ─────────────────────────────────────────────────── */
+
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Layout ──────────────────────────────────────────────────── */
+
+  --hero-index-width: clamp(4rem, 8vw, 7rem);
+  --hero-content-max: 52rem;
+
+  /* ── Animation ───────────────────────────────────────────────── */
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --duration-fast:   300ms;
+  --duration-base:   500ms;
+  --duration-slow:   700ms;
+
+  --stagger-step:    90ms;
+
+  /* ── Grain ───────────────────────────────────────────────────── */
+
+  --grain-opacity: 0.038;
+
+  /* ── Border / Rule ───────────────────────────────────────────── */
+
+  --rule-width:   1px;
+  --rule-color:   var(--color-text-tertiary);
+  --accent-rule-height: 1px;
+
+}

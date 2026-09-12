@@ -15,7 +15,6 @@
 .about {
   position: relative;
   padding-block: clamp(var(--space-20), 12vw, var(--space-32));
-  padding-inline: clamp(var(--space-6), 5vw, var(--space-16));
   background-color: var(--color-bg-base);
   overflow: hidden;
 }
@@ -38,8 +37,8 @@
   content: "";
   position: absolute;
   top: 0;
-  left: clamp(var(--space-6), 5vw, var(--space-16));
-  right: clamp(var(--space-6), 5vw, var(--space-16));
+  left: 0;
+  right: 0;
   height: var(--rule-width);
   background: linear-gradient(
     to right,
@@ -56,7 +55,6 @@
 .about__grid {
   position: relative;
   z-index: 1;
-  width: 100%;
 }
 
 /* ── Content column ──────────────────────────────────────────── */
@@ -65,8 +63,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
-  /* Cap width so text lines stay readable on very wide screens */
-  max-width: 80rem;
 }
 
 /* ── Media + Intro: zig-zag sub-grid ─────────────────────────── */

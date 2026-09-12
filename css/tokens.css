@@ -1,4 +1,4 @@
-﻿/*
+/*
  * tokens.css
  * Design System Tokens — Editorial Noir / Luxury Minimal
  * Portfolio: Valentino Carmona
@@ -81,6 +81,11 @@
   --space-32: 8rem;
 
   /* ── Layout ──────────────────────────────────────────────────── */
+
+  /* Fixed-width centered layout */
+  --page-width:        75rem;           /* 1200px canonical container  */
+  --page-gutter:       2rem;            /* horizontal padding inside    */
+  --page-gutter-sm:    1.25rem;         /* same on narrow mobile        */
 
   --hero-index-width: clamp(4rem, 8vw, 7rem);
   --hero-content-max: 52rem;

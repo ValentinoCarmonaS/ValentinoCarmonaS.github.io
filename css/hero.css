@@ -2,10 +2,10 @@
  * hero.css
  * Hero section — Section 01
  *
- * Layout: Asymmetric split grid
- *   Left column  (index): section number + vertical rule
- *   Right column (content): kicker, display name, gold rule,
+ * Layout: Asymmetric two-column grid (inside .page container)
+ *   Left  column (content): kicker, display name, gold rule,
  *                            statement, credential, CTA block
+ *   Right column (photo):   portrait, gradient-masked into noir
  *
  * Visual system: Editorial Noir / Luxury Minimal
  */
@@ -20,7 +20,6 @@
   justify-content: center;
   overflow: hidden;
   padding-block: var(--space-24);
-  padding-inline: clamp(var(--space-6), 5vw, var(--space-16));
 }
 
 /* ── Grain overlay ───────────────────────────────────────────── */
@@ -41,25 +40,25 @@
   background-size: 260px 260px;
 }
 
-/* ── Portrait photo — ambient right-half ────────────────────── */
+/* ── Portrait photo — in-flow right column ────────────────────── */
 /*
- * The photo sits at z-index 0 (behind the text grid at z-index 1).
- * It is absolutely positioned against the hero's relative container.
- * A CSS mask-image dissolves the photo into the dark background:
- *   - left edge: hard fade from transparent to visible (protects text)
- *   - bottom edge: soft fade to transparent (grounds it in the noir)
- * pointer-events: none ensures it never intercepts clicks.
+ * photo-wrap is the second column of hero__grid.
+ * It is in-flow (position: relative) and constrained to 1200px
+ * alongside the text content.
+ *
+ * align-self: stretch lets it fill the full grid row height so
+ * the portrait image has maximum presence without overflowing.
+ *
+ * The mask-image dissolve is preserved: fade from left and bottom
+ * blends the photo into the noir background naturally.
  */
 
 .hero__photo-wrap {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 50%;
-  z-index: 0;
-  pointer-events: none;
+  position: relative;
+  align-self: stretch;
   overflow: hidden;
+  pointer-events: none;
+  min-height: 24rem;   /* floor height on medium screens */
 
   /*
    * Dual-axis gradient mask:
@@ -89,14 +88,24 @@
   filter: contrast(1.04) brightness(0.94);
 }
 
-/* ── Asymmetric grid ─────────────────────────────────────────── */
+/* ── Two-column grid inside .page ───────────────────────────── */
+/*
+ * .hero__grid is now an in-flow grid with two columns:
+ *   Left  (55fr): text content
+ *   Right (45fr): portrait photo
+ *
+ * Both columns are fully contained within the 1200px .page wrapper.
+ * The photo column uses `align-self: stretch` so it fills the grid
+ * row height, giving the image a tall portrait crop without overflow.
+ */
 
 .hero__grid {
   position: relative;
   z-index: 1;
-  display: block;
-  width: 100%;
-  max-width: var(--hero-content-max);
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: clamp(var(--space-10), 5vw, var(--space-16));
+  align-items: center;
 }
 
 /* ── Right: content column ───────────────────────────────────── */
@@ -261,13 +270,18 @@
 
 /* ── Responsive ──────────────────────────────────────────────── */
 
-/* Tablet — collapse index sidebar at narrow widths */
+/* Tablet — collapse to single column at narrow widths */
 
 @media (max-width: 680px) {
   .hero {
     padding-block: var(--space-16);
     justify-content: flex-start;
     padding-top: clamp(4rem, 15vw, 7rem);
+  }
+
+  /* Single-column: hide photo, let text take full width */
+  .hero__grid {
+    grid-template-columns: 1fr;
   }
 
   .hero__name {
@@ -291,18 +305,5 @@
   /* Photo hidden on mobile — content has full priority */
   .hero__photo-wrap {
     display: none;
-  }
-}
-
-/* Large desktop */
-
-@media (min-width: 1440px) {
-  .hero__name {
-    font-size: clamp(var(--text-5xl), 10vw, var(--text-6xl));
-  }
-
-  /* At very large viewports, keep photo from dominating */
-  .hero__photo-wrap {
-    width: 45%;
   }
 }

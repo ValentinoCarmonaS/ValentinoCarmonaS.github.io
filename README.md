@@ -1,4 +1,4 @@
-﻿# Valentino Carmona — Portfolio
+# Valentino Carmona — Portfolio
 
 **Live:** [valentinocarmonas.github.io](https://valentinocarmonas.github.io/)
 
@@ -18,15 +18,19 @@ Personal portfolio of Valentino Carmona — Computer Engineering student at FIUB
 ├── .nojekyll           # Disables Jekyll on GitHub Pages
 ├── css/
 │   ├── tokens.css      # Design system tokens (colors, type, spacing)
-│   ├── base.css        # Reset, browser surfaces, reveal animation classes
-│   └── hero.css        # Hero section styles
+│   ├── base.css        # Reset, browser surfaces, .page container, reveal classes
+│   ├── hero.css        # Hero section styles
+│   └── about.css       # About / Engineering Identity section styles
 ├── js/
-│   └── hero.js         # Staggered reveal animation (vanilla, no deps)
+│   ├── hero.js         # Staggered reveal animation (vanilla, no deps)
+│   └── scroll-reveal.js  # Intersection Observer reveal for all sections
 ├── img/
-│   ├── valentino-carmona.png   # Professional portrait
+│   ├── valentino-carmona.png   # Professional portrait (Hero)
+│   ├── about-identity.png      # Illustration (About section)
 │   └── og-preview.png          # Social preview image (add before deploying)
 └── docs/
-    └── valentino_carmona_cv.pdf   # CV — drop PDF here before deploying
+    ├── valentino_carmona_cv_en.pdf   # CV — English version
+    └── valentino_carmona_cv_es.pdf   # CV — Spanish version
 ```
 
 ## Design
@@ -42,7 +46,7 @@ Personal portfolio of Valentino Carmona — Computer Engineering student at FIUB
 ## Sections (in progress)
 
 - [x] Hero — Introduction
-- [ ] About / Engineering Identity
+- [x] About / Engineering Identity
 - [ ] Engineering Profile
 - [ ] Selected Projects
 - [ ] Personal Backend Projects
@@ -53,7 +57,7 @@ Personal portfolio of Valentino Carmona — Computer Engineering student at FIUB
 
 ## Before deploying
 
-1. Drop `valentino_carmona_cv.pdf` into `docs/`
+1. Drop `valentino_carmona_cv_en.pdf` and `valentino_carmona_cv_es.pdf` into `docs/`
 2. Add `og-preview.png` (1200×630) into `img/`
 3. Push `main` → GitHub Pages auto-deploys
 

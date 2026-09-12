@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/footer.css" />
 </head>
 
 <body>
@@ -203,6 +204,151 @@
     </div><!-- /.about__grid -->
   </section>
 
+
+  <!-- ─── Footer ──────────────────────────────────────────────── -->
+  <footer class="footer" id="footer" aria-label="Site footer">
+    <div class="footer__inner page">
+
+      <!-- [A] Portfolio Status -->
+      <section class="footer__status" aria-labelledby="footer-status-heading">
+        <div class="footer__status-header">
+          <p class="footer__status-label" id="footer-status-heading">Portfolio Status</p>
+          <p class="footer__status-note">
+            This portfolio is live and being expanded section by section.
+          </p>
+        </div>
+
+        <div class="footer__status-map">
+
+          <!-- Currently Available -->
+          <div class="footer__status-group">
+            <p class="footer__status-group-label">Currently Available</p>
+            <ul class="footer__status-list" role="list" aria-label="Available sections">
+              <li class="footer__status-item footer__status-item--available" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#10003;</span>
+                <span>Hero</span>
+              </li>
+              <li class="footer__status-item footer__status-item--available" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#10003;</span>
+                <span>About / Engineering Identity</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- In Development -->
+          <div class="footer__status-group">
+            <p class="footer__status-group-label">In Development</p>
+            <ul class="footer__status-list" role="list" aria-label="Sections in development">
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Engineering Profile</span>
+              </li>
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Selected Projects</span>
+              </li>
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Personal Backend Projects</span>
+              </li>
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Engineering Practices</span>
+              </li>
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Algorithms &amp; Data Structures</span>
+              </li>
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Education</span>
+              </li>
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Interests</span>
+              </li>
+              <li class="footer__status-item footer__status-item--dev" role="listitem">
+                <span class="footer__status-mark" aria-hidden="true">&#9675;</span>
+                <span>Contact</span>
+              </li>
+            </ul>
+          </div>
+
+        </div><!-- /.footer__status-map -->
+      </section>
+
+      <!-- [B] Identity + Links -->
+      <div class="footer__identity">
+        <div class="footer__name-block">
+          <p class="footer__name">Valentino Carmona</p>
+          <p class="footer__discipline">Backend Software Engineering</p>
+          <p class="footer__location">Palermo Soho, Buenos Aires, C.A.B.A, Argentina</p>
+        </div>
+
+        <ul class="footer__links" role="list" aria-label="Professional links">
+          <li role="listitem">
+            <a class="footer__link" href="https://github.com/ValentinoCarmonaS" target="_blank"
+              rel="noopener noreferrer" aria-label="GitHub profile">
+              <svg class="footer__link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+              </svg>
+              <span>GitHub</span>
+            </a>
+          </li>
+          <li role="listitem">
+            <a class="footer__link" href="https://www.linkedin.com/in/valentinocarmona" target="_blank"
+              rel="noopener noreferrer" aria-label="LinkedIn profile">
+              <svg class="footer__link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li role="listitem">
+            <a class="footer__link" href="mailto:valencarmoon@gmail.com" aria-label="Email Valentino Carmona">
+              <svg class="footer__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m2 7 10 7 10-7" />
+              </svg>
+              <span>Email</span>
+            </a>
+          </li>
+          <li role="listitem">
+            <a class="footer__cv-btn" href="docs/valentino_carmona_cv.pdf" aria-label="Download CV" download>
+              <svg class="footer__cv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v13" />
+                <path d="m7 11 5 5 5-5" />
+                <path d="M3 19h18" />
+              </svg>
+              <span>Download CV</span>
+            </a>
+          </li>
+        </ul>
+      </div><!-- /.footer__identity -->
+
+      <!-- [C] Heraldic Stamp -->
+      <div class="footer__heraldic">
+
+        <!-- Left: text -->
+        <div class="footer__heraldic-text">
+          <p class="footer__motto" lang="la">Sicvt Lvcifer Lvcet in Avrora ita est gens Carmona</p>
+          <p class="footer__copyright">&copy; <span id="footer-year">2025</span> Valentino Carmona</p>
+        </div>
+
+        <!-- Right: shield -->
+        <img class="footer__escudo" src="img/escudo-de-armas.png" alt="Carmona family coat of arms" loading="lazy"
+          decoding="async" />
+
+      </div>
+
+    </div><!-- /.footer__inner -->
+  </footer>
+
+  <script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
   <script src="js/hero.js"></script>
   <script src="js/scroll-reveal.js"></script>
 </body>
